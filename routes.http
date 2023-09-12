@@ -1,4 +1,6 @@
 
 
-@name get-prompts
+# get all prompts Route
 GET http://localhost:3333/prompts
+
+
