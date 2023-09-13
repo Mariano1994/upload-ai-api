@@ -11,18 +11,30 @@ Content-Type: multipart/form-data; boundary=----WebkitFromBoundary7MA4YWxkTrZu0g
 
 
 ------WebkitFromBoundary7MA4YWxkTrZu0gw
-content-Disposition: form-data; name="file"; filename="example.mp3"
+content-Disposition: form-data; name="file"; filename="canada.mp3"
 Content-Type: audio/mpeg
 
 
-< ./example.mp3
+< ./canada.mp3
 ------WebkitFromBoundary7MA4YWxkTrZu0gw--
 
 # Create transcription Route
 ###
-POST http://localhost:3333/videos/a858429c-3e7f-4fe6-b176-1e22ec419a5c/transcription
+POST http://localhost:3333/videos/4484f751-9e75-4744-b6b5-4b6fd042b3ec/transcription
 Content-Type: application/json
 
 {
-  "prompt": "em tudo dai gracas, biblia"
+  "prompt": "Rnb, brasil, canada, aluguer"
+}
+
+# Generate AI Completion
+
+###
+POST http://localhost:3333/ai/generate/completion
+Content-Type: application/json
+
+{
+  "videoId": "9be4ede8-169f-4583-8369-e510560143a8",
+  "template": "Gere um resumo sucinto da transcrição do vídeo informado a seguir: '''{transcription}'''",
+  "temperature": 0.4
 }

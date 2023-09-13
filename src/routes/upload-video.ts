@@ -4,11 +4,10 @@ import path from "node:path";
 import fs from 'node:fs'
 import {pipeline} from 'node:stream'
 import { randomUUID } from "node:crypto";
-import { promisify } from "node:util";
+import util from "node:util";
 import { prisma } from "../lib/prisma";
 
-
-const pump = promisify(pipeline)
+const pump = util.promisify(pipeline)
 
 export async function uploadVidoRoute(app: FastifyInstance) {
   app.register(fastifyMultipart, {
