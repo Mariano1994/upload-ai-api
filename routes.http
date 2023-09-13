@@ -4,7 +4,6 @@ GET http://localhost:3333/prompts
 
 
 
-
 # Upload video Route
 ###
 POST http://localhost:3333/videos
@@ -21,9 +20,9 @@ Content-Type: audio/mpeg
 
 # Create transcription Route
 ###
-POST http://localhost:3333/videos/6f6df7b2-2004-4652-adb5-1cb4411d2b1a/transcription
+POST http://localhost:3333/videos/a858429c-3e7f-4fe6-b176-1e22ec419a5c/transcription
 Content-Type: application/json
 
 {
-  "prompt": "good to me, god"
+  "prompt": "em tudo dai gracas, biblia"
 }
