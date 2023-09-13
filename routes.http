@@ -1,6 +1,18 @@
 
-
 # get all prompts Route
 GET http://localhost:3333/prompts
 
 
+# Upload video Route
+###
+POST http://localhost:3333/videos
+Content-Type: multipart/form-data; boundary=----WebkitFromBoundary7MA4YWxkTrZu0gw
+
+
+------WebkitFromBoundary7MA4YWxkTrZu0gw
+content-Disposition: form-data; name="file"; filename"example.mp3"
+Content-Type: audio/mpeg
+
+
+< ./example.mp3
+------WebkitFromBoundary7MA4YWxkTrZu0gw--
