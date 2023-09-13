@@ -18,3 +18,12 @@ Content-Type: audio/mpeg
 
 < ./example.mp3
 ------WebkitFromBoundary7MA4YWxkTrZu0gw--
+
+# Create transcription Route
+###
+POST http://localhost:3333/videos/6f6df7b2-2004-4652-adb5-1cb4411d2b1a/transcription
+Content-Type: application/json
+
+{
+  "prompt": "good to me, god"
+}

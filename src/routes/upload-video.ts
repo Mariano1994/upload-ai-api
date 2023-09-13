@@ -17,7 +17,6 @@ export async function uploadVidoRoute(app: FastifyInstance) {
     },
   });
 
-
   app.post("/videos", async (request, reply) => {
 
     const data = await request.file();
@@ -35,9 +34,7 @@ export async function uploadVidoRoute(app: FastifyInstance) {
     }
 
     const fileBaseName = path.basename(data.filename, extension);
-
     const fileUploadName = `${fileBaseName}-${randomUUID()}${extension}`;
-
     const uploadDestination = path.resolve(
       __dirname,
       "../../temp",
