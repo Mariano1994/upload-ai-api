@@ -17,25 +17,26 @@ export async function uploadVidoRoute(app: FastifyInstance) {
     },
   });
 
-  
+
   app.post("/videos", async (request, reply) => {
+
     const data = await request.file();
 
     if (!data) {
       return reply.status(400).send({ error: "Missing file input." });
     }
 
-    const extention = path.extname(data.filename);
+    const extension = path.extname(data.filename);
 
-    if (extention !== ".mp3") {
+    if (extension !== ".mp3") {
       return reply
         .status(400)
         .send({ error: "Invalid file extension, plase upload a MP3 file." });
     }
 
-    const fileBaseName = path.basename(data.filename, extention);
+    const fileBaseName = path.basename(data.filename, extension);
 
-    const fileUploadName = `${fileBaseName}-${randomUUID()}${extention}`;
+    const fileUploadName = `${fileBaseName}-${randomUUID()}${extension}`;
 
     const uploadDestination = path.resolve(
       __dirname,
@@ -45,7 +46,15 @@ export async function uploadVidoRoute(app: FastifyInstance) {
 
     await pump(data.file, fs.createWriteStream(uploadDestination))
 
-      return reply.send()
+    const video = await prisma.video.create({
+     data:{
+      name: data.filename,
+      path: uploadDestination
+     }
+    })
 
+      return {
+        video,
+      }
   });
 }
